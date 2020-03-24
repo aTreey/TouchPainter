@@ -19,10 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
   
   // Add the view controller's view to the window and display.
-  CoordinatingController *coordinatingController = [CoordinatingController sharedInstance];
-  UIView *view = [[coordinatingController activeViewController] view];
-  [window_ addSubview:view];
-  [window_ makeKeyAndVisible];
+//  CoordinatingController *coordinatingController = [CoordinatingController sharedInstance];
+//  UIView *view = [[coordinatingController activeViewController] view];
+//  [window_ addSubview:view];
+//  [window_ makeKeyAndVisible];
+    
+    // fix: 设置rootViewController
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [[CoordinatingController sharedInstance] activeViewController] ;
+    [self.window makeKeyAndVisible];
   
   return YES;
 }
